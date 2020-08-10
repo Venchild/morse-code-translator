@@ -1,37 +1,44 @@
-## Welcome to GitHub Pages
+## 1. 개인정보의 처리 목적 <모스코드 변환기>
 
-You can use the [editor on GitHub](https://github.com/Venchild/morse-code-translator/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+(‘https://github.com/Venchild’이하 ‘Venchild’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 본 앱은 일체의 회원가입 및 개인정보 제공을 요구 하지 않습니다. 다만 구글플레이에서 광고와 분석(Analytics)을 위하여 사용자에게 부여하는 Android Advertising ID가 앱 내 광고를 위한 Google AdMob 과 사용 분석을 위한 Google Analytics에 제공되며 이에 대한 절차 및 책임은 Google AdMob과 Google Analytics에 있습니다.
+모스코드 변환기는 Android Advertising ID와 관련하여 구글플레이의 지침을 철저히 준수하며, 이를 일체 앱에 저장하거나 모스코드 변환기 서버에 전달 또는 저장하지 않습니다.
+사용자 분석 데이터는 Google Analytics에 의해 완벽하게 익명처리됩니다.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## 2. 정보주체의 권리,의무 및 그 행사방법 이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다.
+- 모두 사용자가 직접 앱을 삭제 하여 처리 할 수 있습니다.
 
-### Markdown
+## 3. 처리하는 개인정보의 항목 작성
+① <모스코드 변환기>('https://github.com/Venchild' 이하 'Venchild')은(는) 다음의 개인정보 항목을 처리하고 있습니다.
+- 구글플레이에서 광고와 분석(Analytics)을 위하여 Android 광고 ID를 수집하고 전송
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## 4. 개인정보의 파기<모스코드 변환기>('https://github.com/Venchild' 이하 'Venchild')은(는) 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
+1. 기능 사용시 개인정보를 개발자가 수집하지 않습니다.
 
+## 5. 개인정보의 안전성 확보 조치 <모스코드 변환기>('https://github.com/Venchild' 이하 'Venchild')은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.
+1. 수집된 사용자의 정보는 Google의 서버로 전송될 뿐, 기술적으로 개발자는 접근이 불가능합니다.
+
+## 6. 개인정보 보호책임자 작성
+1.  모스코드 변환기('https://github.com/Venchild' 이하 ‘Venchild’) 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
 ```markdown
-Syntax highlighted code block
+개인정보 보호책임자
 
-# Header 1
-## Header 2
-### Header 3
+성명 : 박우철
+직책 : 개발자
+직급 : 개발자
+연락처 : mrparkwc@gmail.com
 
-- Bulleted
-- List
+※ 개인정보 보호 담당부서로 연결됩니다.
 
-1. Numbered
-2. List
+개인정보 보호 담당부서
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+부서명 : 개발
+담당자 : 개발자
+연락처 : mrparkwc@gmail.com
 ```
+2.  정보주체께서는 <모스코드 변환기>('https://github.com/Venchild' 이하 'Venchild') 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. <모스코드 변환기>('https://github.com/Venchild' 이하 'Venchild') 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## 7. 개인정보 처리방침 변경
 
-### Jekyll Themes
+1. 이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Venchild/morse-code-translator/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+2. 이 개인정보처리방침은 2020년 8월 10일부터 적용 됩니다.
