@@ -1,43 +1,57 @@
-# 개인정보 보호방침
+# Privacy Policy
 
-Venchild(이하 "서비스 제공자") 은(는) 『개인정보 보호법』에 따라 이용자의 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 이용자의 고충을 원활하게 처리할 수 있도록 다음과 같은 처리방침을 두고 있습니다.
+Venchild built the "MorseCode Translator" app as an Ad Supported app. This SERVICE is provided by Venchild at no cost and is intended for use as is.
 
-"서비스 제공자"는 개인정보처리방침을 개정하는 경우 7일 전부터 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
+This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
 
-※ 본 방침은부터 2020년 8월 10부터 시행됩니다.
+If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.
 
-## 1. 개인정보의 처리 목적
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at "MorseCode Translator" unless otherwise defined in this Privacy Policy.
 
-- "서비스 제공자"는 다음의 목적을 위하여 개인정보를 처리하고 있으며, 본 앱은 일체의 회원가입 및 개인정보 제공을 요구 하지 않습니다. 다만 구글플레이에서 광고와 분석을 위하여 사용자에게 부여하는 Android Advertising ID 와 모바일 식별자를 앱 내 광고를 위한 Google AdMob 과 사용 분석을 위한 Google Play Services, Firebase Analytics, Crashlytics, Fabric 에 제공되며 이에 대한 절차 및 책임은 Google AdMob과 Google Play Services, Firebase Analytics, Crashlytics, Fabric에 있습니다.
-모스코드 변환기는 Android Advertising ID, 모바일 식별자와 관련하여 구글플레이의 지침을 철저히 준수하며, 이를 일체 앱에 저장하거나 모스코드 변환기 서버에 전달 또는 저장하지 않습니다.
-사용자 분석 데이터는 Google Play Services, Firebase Analytics, Crashlytics, Fabric에 의해 완벽하게 익명처리됩니다.
+## Information Collection and Use
 
-## 2. 정보주체의 권리,의무 및 그 행사방법 이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다.
-1. 모두 사용자가 직접 앱을 삭제 하여 처리 할 수 있습니다.
+For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to advertising IDcookies, mobile identifiers. The information that we request is will be retained by us and used as described in this privacy policy.
 
-## 3. 처리하는 개인정보의 항목 작성
-1.  "서비스 제공자"는 다음의 개인정보 항목을 처리하고 있습니다.
-- 구글플레이에서 광고와 분석을 위하여 Android 광고 ID, 모바일 식별자를 수집하고 전송
+The app does use third party services that may collect information used to identify you.
 
-## 4. 개인정보의 파기 "서비스 제공자"는 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
-1. 기능 사용시 개인정보를 개발자가 수집하지 않습니다.
+Link to privacy policy of third party service providers used by the app
 
-## 5. 개인정보의 안전성 확보 조치 "서비스 제공자"는 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.
-1. 수집된 사용자의 정보는 Google의 서버로 전송될 뿐, 기술적으로 개발자는 접근이 불가능합니다.
+[Google Play Services](https://policies.google.com/privacy).   
+[AdMob](https://support.google.com/admob/answer/6128543?hl=en).   
+[Firebase Analytics](https://firebase.google.com/policies/analytics).   
+[Crashlytics](https://firebase.google.com/products/crashlytics?utm_source=crashlytics_marketing&utm_medium=redirect&utm_campaign=crashlytics_redirect).  
+[Fabric](https://firebase.google.com/products/crashlytics?utm_source=crashlytics_marketing&utm_medium=redirect&utm_campaign=crashlytics_redirect).  
 
-## 6. 개인정보 보호책임자 작성
-1.  "서비스 제공자"는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+## Log Data
+We want to inform you that whenever you use our Service, in a case of an error in the app we collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics. We use Crashlytics to report to us when the app crashes so that we can fix these crashes as soon as possible. We don't send any information to Crashlytics, but they may collect information via their SDK.
 
-* 개인정보 보호책임자
-  * 성명 : 박우철
-  * 직책 : 개발자
-  * 직급 : 개발자
-  * 연락처 : mrparkwc@gmail.com
+## Cookies
+Cookies are files with small amount of data that is commonly used as anonymous unique identifier of your mobile device. This Service uses cookies to deliver personalized ads and to allow for frequency capping, aggregated ad reporting, and to combat fraud and abuse. These are sent to your browser from the websites that you visit and are stored on your device's internal memory. This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services.
 
-2.  정보주체께서는 "서비스 제공자" 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. "서비스 제공자"는 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
+## Ads
+This Service uses mobile ad identifiers to show personalized ads. We share such identifiers with advertising partners – ad technology providers. You can see the full list of [ad technology providers here](https://support.google.com/admob/answer/9012903). By accepting this Privacy Policy you consent to the use of the mobile ad identifiers used in this Service. We hope you enjoy this free Service and your personalized ad experience. If you ever change your mind, you can withdraw your consent by purchasing this Service version without ads. This can be done in the application settings.
 
-## 7. 개인정보 처리방침 변경
+## Analytics
+We use third party analytics tool, Firebase Analytics, to help us measure traffic and usage trends for the service. Firebase Analytics collects information such as how often users visit our services, what pages they visit when they do so, and what other pages they use prior to coming to our services. We use the information get from Firebase Analytics only to improve our services.
 
-1. 이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
+## Service Providers
+We may employ third-party companies and individuals due to the following reasons:
 
-2. 이 개인정보처리방침은 2020년 8월 10일부터 적용 됩니다.
+To facilitate our Service;
+To provide the Service on our behalf;
+To perform Service-related services;
+To assist us in analyzing how our Service is used.
+We want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+
+## Security
+We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.
+
+## Links to Other Sites
+This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+
+## Changes to This Privacy Policy
+We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
+
+## Contact Us
+If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at mrparkwc@gmail.com
+
