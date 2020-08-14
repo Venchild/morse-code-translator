@@ -6,16 +6,16 @@ Venchild(이하 "서비스 제공자") 은(는) 『개인정보 보호법』에 
 
 ## 1. 개인정보의 처리 목적
 
-- "서비스 제공자"는 다음의 목적을 위하여 개인정보를 처리하고 있으며, 본 앱은 일체의 회원가입 및 개인정보 제공을 요구 하지 않습니다. 다만 구글플레이에서 광고와 분석(Analytics)을 위하여 사용자에게 부여하는 Android Advertising ID가 앱 내 광고를 위한 Google AdMob 과 사용 분석을 위한 Google Analytics에 제공되며 이에 대한 절차 및 책임은 Google AdMob과 Google Analytics에 있습니다.
-모스코드 변환기는 Android Advertising ID와 관련하여 구글플레이의 지침을 철저히 준수하며, 이를 일체 앱에 저장하거나 모스코드 변환기 서버에 전달 또는 저장하지 않습니다.
-사용자 분석 데이터는 Google Analytics에 의해 완벽하게 익명처리됩니다.
+- "서비스 제공자"는 다음의 목적을 위하여 개인정보를 처리하고 있으며, 본 앱은 일체의 회원가입 및 개인정보 제공을 요구 하지 않습니다. 다만 구글플레이에서 광고와 분석을 위하여 사용자에게 부여하는 Android Advertising ID 와 모바일 식별자를 앱 내 광고를 위한 Google AdMob 과 사용 분석을 위한 Google Play Services, Firebase Analytics, Crashlytics, Fabric 에 제공되며 이에 대한 절차 및 책임은 Google AdMob과 Google Play Services, Firebase Analytics, Crashlytics, Fabric에 있습니다.
+모스코드 변환기는 Android Advertising ID, 모바일 식별자와 관련하여 구글플레이의 지침을 철저히 준수하며, 이를 일체 앱에 저장하거나 모스코드 변환기 서버에 전달 또는 저장하지 않습니다.
+사용자 분석 데이터는 Google Play Services, Firebase Analytics, Crashlytics, Fabric에 의해 완벽하게 익명처리됩니다.
 
 ## 2. 정보주체의 권리,의무 및 그 행사방법 이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다.
 1. 모두 사용자가 직접 앱을 삭제 하여 처리 할 수 있습니다.
 
 ## 3. 처리하는 개인정보의 항목 작성
 1.  "서비스 제공자"는 다음의 개인정보 항목을 처리하고 있습니다.
-- 구글플레이에서 광고와 분석(Analytics)을 위하여 Android 광고 ID를 수집하고 전송
+- 구글플레이에서 광고와 분석을 위하여 Android 광고 ID, 모바일 식별자를 수집하고 전송
 
 ## 4. 개인정보의 파기 "서비스 제공자"는 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
 1. 기능 사용시 개인정보를 개발자가 수집하지 않습니다.
