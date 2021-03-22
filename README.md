@@ -22,8 +22,8 @@ Screenshot
 
 Installation
 ============
-[Google Play](https://play.google.com/store/apps/details?id=com.venchild.morse&hl=en, "google play link")
+[Google Play](https://play.google.com/store/apps/details?id=com.venchild.morse&hl=en)
 
 Author
 ============
-Venchild
+[Venchild](https://github.com/Venchild)
