@@ -1,8 +1,7 @@
 # MorseCode Translator
 
 Translate  English, Korean, Symbol ⇄ Morse Code, Save and Share
-
-<img src="https://github.com/Venchild/morse-code-translator/blob/main/images/graphic_image.png" width="70%" height="70%"/>
+<img src="images/graphic_image.png" width="70%" height="70%"/>
 
 Do you hate normal conversation? MorseCode Translator!
 Try sharing English or Korean with Morse code.
@@ -19,7 +18,7 @@ Use a MorseCode Translator where you can leave a post, such as SNS or Messenger.
 
 Screenshot
 ============
-<img src="https://github.com/Venchild/morse-code-translator/blob/main/images/screen_01_en.png" width="30%" height="30%"/><img src="https://github.com/Venchild/morse-code-translator/blob/main/images/screen_02_en.png" width="30%" height="30%"/><img src="https://github.com/Venchild/morse-code-translator/blob/main/images/screen_03_en.png" width="30%" height="30%"/><img src="https://github.com/Venchild/morse-code-translator/blob/main/images/screen_04_en.png" width="30%" height="30%"/><img src="https://github.com/Venchild/morse-code-translator/blob/main/images/screen_05_en.png" width="30%" height="30%"/>
+<img src="images/screen_01_en.png" width="30%" height="30%"/><img src="images/screen_02_en.png" width="30%" height="30%"/><img src="images/screen_03_en.png" width="30%" height="30%"/><img src="images/screen_04_en.png" width="30%" height="30%"/><img src="images/screen_05_en.png" width="30%" height="30%"/>
 
 Installation
 ============
