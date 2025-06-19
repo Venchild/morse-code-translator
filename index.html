@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>MOST - Morse Code Translator | Text to Morse & Morse to Text</title>
+    <meta name="description" content="Free online Morse code translator supporting 9+ languages including English, Korean, Japanese, Chinese, Russian, Arabic. Convert text to Morse code and vice versa with audio playback.">
+    <meta name="keywords" content="morse code, morse translator, morse code converter, text to morse, morse to text, morse code generator, morse code decoder, korean morse, japanese morse, multilingual morse">
+    <meta name="author" content="MOST - Morse Code Translator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://venchild.github.io/morse-code-translator/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MOST - Free Morse Code Translator">
+    <meta property="og:description" content="Convert text to Morse code and vice versa with support for 9+ languages. Features audio playback, real-time translation, and comprehensive code reference.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://venchild.github.io/morse-code-translator/">
+    <meta property="og:image" content="https://venchild.github.io/morse-code-translator/assets/images/og-image.png">
+    <meta property="og:site_name" content="MOST - Morse Code Translator">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MOST - Free Morse Code Translator">
+    <meta name="twitter:description" content="Convert text to Morse code and vice versa with support for 9+ languages.">
+    <meta name="twitter:image" content="https://venchild.github.io/morse-code-translator/assets/images/og-image.png">
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+     
+    <!-- Android Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/android-chrome-512x512.png">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./assets/css/styles.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "MOST - Morse Code Translator",
+        "description": "Free online Morse code translator supporting multiple languages including English, Korean, Japanese, Chinese, Russian, and Arabic.",
+        "url": "https://venchild.github.io/morse-code-translator/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Text to Morse code conversion",
+            "Morse code to text conversion", 
+            "Multi-language support",
+            "Audio playback",
+            "Real-time translation",
+            "Morse code reference guide",
+            "Share functionality"
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "MOST"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 id="title">MOST - Morse Code Translator</h1>
+            <p id="subtitle">Real-time translation between text and Morse code</p>
+        </header>
+
+        <nav class="controls" role="navigation" aria-label="Main controls">
+            <div class="language-selector">
+                <button class="language-btn" id="languageBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                    <i class="fas fa-globe" aria-hidden="true"></i>
+                    <span id="currentLang">English</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="language-dropdown" id="languageDropdown" role="menu">
+                    <div class="language-option" data-lang="en" role="menuitem">🇺🇸 English</div>
+                    <div class="language-option" data-lang="ko" role="menuitem">🇰🇷 한국어</div>
+                    <div class="language-option" data-lang="ja" role="menuitem">🇯🇵 日本語</div>
+                    <div class="language-option" data-lang="zh" role="menuitem">🇨🇳 中文</div>
+                    <div class="language-option" data-lang="es" role="menuitem">🇪🇸 Español</div>
+                    <div class="language-option" data-lang="fr" role="menuitem">🇫🇷 Français</div>
+                    <div class="language-option" data-lang="de" role="menuitem">🇩🇪 Deutsch</div>
+                    <div class="language-option" data-lang="ru" role="menuitem">🇷🇺 Русский</div>
+                    <div class="language-option" data-lang="ar" role="menuitem">🇸🇦 العربية</div>
+                </div>
+            </div>
+
+            <button class="reference-btn" id="referenceBtn" aria-label="Open Morse code reference guide">
+                <i class="fas fa-book" aria-hidden="true"></i>
+                <span id="referenceText">Code Reference</span>
+            </button>
+
+            <button class="mode-switch" id="modeSwitch" aria-label="Switch translation mode">
+                <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+                <span id="modeText">Text → Morse</span>
+            </button>
+        </nav>
+
+        <main class="translator-card">
+            <section class="input-section">
+                <h2 class="input-label">
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                    <span id="inputLabel">Enter text to translate</span>
+                </h2>
+                <textarea 
+                    class="input-area" 
+                    id="inputArea" 
+                    placeholder="Type your message here..."
+                    aria-label="Input text area"
+                    role="textbox"
+                    aria-multiline="true"
+                ></textarea>
+                <div class="detected-language" id="detectedLanguage" aria-live="polite"></div>
+            </section>
+
+            <section class="output-section">
+                <h2 class="input-label">
+                    <i class="fas fa-code" aria-hidden="true"></i>
+                    <span id="outputLabel">Morse Code Output</span>
+                </h2>
+                <textarea 
+                    class="output-area" 
+                    id="outputArea" 
+                    readonly
+                    aria-label="Morse code output"
+                    role="textbox"
+                    aria-multiline="true"
+                ></textarea>
+            </section>
+
+            <section class="audio-controls" aria-label="Audio controls">
+                <button class="btn btn-secondary" id="playBtn" aria-label="Play Morse code audio">
+                    <i class="fas fa-play" aria-hidden="true"></i>
+                    <span id="playText">Play</span>
+                </button>
+                <div class="speed-control">
+                    <label for="speedSlider" id="speedLabel">Speed:</label>
+                    <input 
+                        type="range" 
+                        class="speed-slider" 
+                        id="speedSlider" 
+                        min="1" 
+                        max="10" 
+                        value="5"
+                        aria-label="Audio playback speed"
+                    >
+                    <span id="speedValue" aria-live="polite">5</span>
+                </div>
+            </section>
+
+            <section class="action-buttons" role="group" aria-label="Action buttons">
+                <button class="btn btn-primary" id="copyBtn" aria-label="Copy output to clipboard">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
+                    <span id="copyText">Copy</span>
+                </button>
+                <button class="btn btn-secondary" id="clearBtn" aria-label="Clear all text">
+                    <i class="fas fa-trash" aria-hidden="true"></i>
+                    <span id="clearText">Clear</span>
+                </button>
+                <button class="btn btn-secondary" id="shareBtn" aria-label="Share translation">
+                    <i class="fas fa-share" aria-hidden="true"></i>
+                    <span id="shareText">Share</span>
+                </button>
+            </section>
+        </main>
+
+        <aside class="share-section" id="shareSection" style="display: none;" aria-label="Share section">
+            <h3 id="shareTitle">Share this translation</h3>
+            <input type="text" class="share-url" id="shareUrl" readonly aria-label="Share URL">
+            <button class="btn btn-primary" id="copyUrlBtn" style="margin-top: 10px;" aria-label="Copy share URL">
+                <i class="fas fa-copy" aria-hidden="true"></i>
+                <span id="copyUrlText">Copy URL</span>
+            </button>
+        </aside>
+
+        <section class="download-section">
+            <h3 id="downloadTitle">Want more features?</h3>
+            <p id="downloadDescription">Download the full app to access Timeline community features, save your translations, and connect with other users!</p>
+            <a href="https://play.google.com/store/apps/details?id=com.venchild.morse" 
+               class="download-btn" 
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Download app on Google Play Store">
+                <i class="fab fa-google-play" aria-hidden="true"></i>
+                <span id="downloadText">Download on Google Play</span>
+            </a>
+        </section>
+    </div>
+
+    <!-- Morse Code Reference Modal -->
+    <div id="referenceModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close" id="closeModal" aria-label="Close modal">&times;</button>
+            <h2 id="modalTitle">Morse Code Reference</h2>
+            <div id="codebookContent"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
