@@ -3,18 +3,22 @@
 Translate  English, Korean, Symbol ⇄ Morse Code, Save and Share
 <img src="images/graphic_image.png" width="70%" height="70%"/>
 
-Do you hate normal conversation? MorseCode Translator!
-Try sharing English or Korean with Morse code.
+Tired of ordinary conversations? MorseCode Translator is here!
+Try sharing your thoughts in Morse code or connecting with others on the Timeline.
 
-■ Real-time Translate
-Korean, English, symbols ⇄ Morse code Translated in real time.
+Key Features
+
+■ Real-time Translation
+Instantly translate Korean, English, and symbols to and from Morse code.
 
 ■ Storage
-You can save Morse code that you want to use or record frequently.
-Do you have any important stored list? I can only collect them.
+Save frequently used or important Morse code messages. You can even collect your most crucial saved items for quick access.
 
 ■ Share
-Use a MorseCode Translator where you can leave a post, such as SNS or Messenger.
+Easily share your Morse code messages on social media, messengers, and any platform where you can leave a post.
+
+■ Timeline
+Connect with other users by posting Morse code messages and commenting on theirs. It’s a unique space for Morse code communication!
 
 Screenshot
 ============
