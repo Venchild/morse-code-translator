@@ -1,6 +1,7 @@
 # MorseCode Translator
 
-Translate  English, Korean, Symbol ⇄ Morse Code, Save and Share
+Translate English, Korean, Symbol ⇄ Morse Code, Save, Share, and Connect!
+
 <img src="images/graphic_image.png" width="70%" height="70%"/>
 
 Tired of ordinary conversations? MorseCode Translator is here!
