@@ -37,11 +37,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/android-chrome-512x512.png">
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="./assets/css/styles.css" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styles.css">
     
     <!-- JSON-LD Structured Data -->
@@ -78,15 +74,17 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
         <header class="header">
             <h1 id="title">MOST - Morse Code Translator</h1>
             <p id="subtitle">Real-time translation between text and Morse code</p>
         </header>
 
-        <nav class="controls" role="navigation" aria-label="Main controls">
+        <nav class="controls glass-card" role="navigation" aria-label="Main controls">
             <div class="language-selector">
-                <button class="language-btn" id="languageBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                <button class="btn-modern" id="languageBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
                     <i class="fas fa-globe" aria-hidden="true"></i>
                     <span id="currentLang">English</span>
                     <i class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -104,18 +102,18 @@
                 </div>
             </div>
 
-            <button class="reference-btn" id="referenceBtn" aria-label="Open Morse code reference guide">
+            <button class="btn-modern" id="referenceBtn" aria-label="Open Morse code reference guide">
                 <i class="fas fa-book" aria-hidden="true"></i>
                 <span id="referenceText">Code Reference</span>
             </button>
 
-            <button class="mode-switch" id="modeSwitch" aria-label="Switch translation mode">
+            <button class="btn-modern" id="modeSwitch" aria-label="Switch translation mode">
                 <i class="fas fa-exchange-alt" aria-hidden="true"></i>
                 <span id="modeText">Text → Morse</span>
             </button>
         </nav>
 
-        <main class="translator-card">
+        <main class="glass-card">
             <section class="input-section">
                 <h2 class="input-label">
                     <i class="fas fa-edit" aria-hidden="true"></i>
@@ -141,6 +139,7 @@
                     class="output-area" 
                     id="outputArea" 
                     readonly
+                    placeholder="Morse code will appear here..."
                     aria-label="Morse code output"
                     role="textbox"
                     aria-multiline="true"
@@ -183,10 +182,10 @@
             </section>
         </main>
 
-        <aside class="share-section" id="shareSection" style="display: none;" aria-label="Share section">
+        <aside class="share-section glass-card" id="shareSection" style="display: none;" aria-label="Share section">
             <h3 id="shareTitle">Share this translation</h3>
             <input type="text" class="share-url" id="shareUrl" readonly aria-label="Share URL">
-            <button class="btn btn-primary" id="copyUrlBtn" style="margin-top: 10px;" aria-label="Copy share URL">
+            <button class="btn btn-primary" id="copyUrlBtn" style="margin-top: 1rem;" aria-label="Copy share URL">
                 <i class="fas fa-copy" aria-hidden="true"></i>
                 <span id="copyUrlText">Copy URL</span>
             </button>
