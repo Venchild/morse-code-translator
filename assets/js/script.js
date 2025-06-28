@@ -333,6 +333,7 @@ function init() {
     loadFromURL();
     setupEventListeners();
     updateUI();
+    createParticles();
 }
 
 function detectUserLanguage() {
@@ -376,17 +377,14 @@ function setupEventListeners() {
             const lang = this.dataset.lang;
             const langText = this.textContent.trim();
             
-            // Update current language
             currentLang = lang;
             document.getElementById('currentLang').textContent = langText;
             languageDropdown.classList.remove('active');
             languageBtn.setAttribute('aria-expanded', 'false');
             
-            // Update UI with new language
             updateUI();
         });
         
-        // Add keyboard navigation
         option.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -433,7 +431,6 @@ function setupEventListeners() {
         inputArea.value = outputArea.value;
         outputArea.value = tempValue;
         
-        // Update UI and translate
         updateUI();
         translateText();
     });
@@ -462,10 +459,8 @@ function showReferenceModal() {
     const content = document.getElementById('codebookContent');
     const t = translations[currentLang];
     
-    // Clear previous content
     content.innerHTML = '';
     
-    // Generate content for each table
     Object.entries(morseCodeTables).forEach(([key, table]) => {
         const section = document.createElement('div');
         section.className = 'codebook-section';
@@ -515,7 +510,6 @@ function updateUI() {
     const t = translations[currentLang];
     if (!t) return;
 
-    // Update all text elements
     document.getElementById('title').textContent = t.title;
     document.getElementById('subtitle').textContent = t.subtitle;
     document.getElementById('inputLabel').textContent = t.inputLabel;
@@ -534,11 +528,9 @@ function updateUI() {
     document.getElementById('referenceText').textContent = t.referenceText;
     document.getElementById('modalTitle').textContent = t.modalTitle;
 
-    // Update placeholder
     const inputArea = document.getElementById('inputArea');
     inputArea.placeholder = isTextToMorse ? t.placeholder : t.morsePlaceholder;
 
-    // Update document language and page title
     document.documentElement.lang = currentLang;
     document.title = t.title;
 }
@@ -622,13 +614,10 @@ function textToMorse(text) {
 }
 
 function morseToText(morse) {
-    // Split by word separators first
     const words = morse.split(' / ');
     return words.map(word => {
-        // Split by syllable separators for Korean
         const syllables = word.split(' | ');
         return syllables.map(syllable => {
-            // Split by spaces for individual morse codes
             const codes = syllable.trim().split(/\s+/);
             return codes.map(code => {
                 return reverseMorseCode[code] || code;
@@ -640,18 +629,21 @@ function morseToText(morse) {
 function copyOutput() {
     const output = document.getElementById('outputArea');
     output.select();
-    output.setSelectionRange(0, 99999); // For mobile devices
+    output.setSelectionRange(0, 99999);
     
     try {
-        document.execCommand('copy');
-        showNotification('Copied!');
-    } catch (err) {
-        // Fallback for modern browsers
         navigator.clipboard.writeText(output.value).then(() => {
             showNotification('Copied!');
+            output.classList.add('success-animation');
+            setTimeout(() => {
+                output.classList.remove('success-animation');
+            }, 600);
         }).catch(() => {
-            showNotification('Copy failed');
+            document.execCommand('copy');
+            showNotification('Copied!');
         });
+    } catch (err) {
+        console.error('Copy failed:', err);
     }
 }
 
@@ -706,14 +698,14 @@ function copyShareUrl() {
     shareUrl.setSelectionRange(0, 99999);
     
     try {
-        document.execCommand('copy');
-        showShareNotification('Copied!');
-    } catch (err) {
         navigator.clipboard.writeText(shareUrl.value).then(() => {
             showShareNotification('Copied!');
         }).catch(() => {
-            showShareNotification('Copy failed');
+            document.execCommand('copy');
+            showShareNotification('Copied!');
         });
+    } catch (err) {
+        console.error('Copy failed:', err);
     }
 }
 
@@ -750,7 +742,6 @@ function loadFromURL() {
 
 function playMorse() {
     if (isPlaying) {
-        // Stop current playback
         stopMorsePlayback();
         return;
     }
@@ -778,13 +769,11 @@ function playMorse() {
 function stopMorsePlayback() {
     isPlaying = false;
     
-    // Clear any pending timeouts
     if (currentToneTimeout) {
         clearTimeout(currentToneTimeout);
         currentToneTimeout = null;
     }
     
-    // Stop current oscillator
     if (currentOscillator) {
         try {
             currentOscillator.stop();
@@ -795,7 +784,6 @@ function stopMorsePlayback() {
         currentOscillator = null;
     }
     
-    // Reset button
     const btn = document.getElementById('playBtn');
     const t = translations[currentLang];
     btn.innerHTML = `<i class="fas fa-play" aria-hidden="true"></i> ${t.playText}`;
@@ -807,24 +795,23 @@ async function playMorseAudio(morseText) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
         }
         
-        // Resume audio context if suspended
         if (audioContext.state === 'suspended') {
             await audioContext.resume();
         }
         
         const speed = parseInt(document.getElementById('speedSlider').value);
-        const dotDuration = 1200 / speed; // Base duration in milliseconds
+        const dotDuration = 1200 / speed;
         const dashDuration = dotDuration * 3;
         const pauseDuration = dotDuration;
         const letterPauseDuration = dotDuration * 3;
         const wordPauseDuration = dotDuration * 7;
         
-        const frequency = 600; // Hz
+        const frequency = 600;
         
         for (let i = 0; i < morseText.length && isPlaying; i++) {
             const char = morseText[i];
             
-            if (!isPlaying) break; // Check if stopped
+            if (!isPlaying) break;
             
             if (char === '.') {
                 await playTone(frequency, dotDuration);
@@ -864,8 +851,8 @@ function playTone(frequency, duration) {
             oscillator.type = 'sine';
             
             gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
-            gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + duration / 1000 - 0.01);
+            gainNode.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + duration / 1000 - 0.01);
             gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration / 1000);
             
             oscillator.start(audioContext.currentTime);
@@ -897,3 +884,26 @@ function sleep(ms) {
         currentToneTimeout = setTimeout(resolve, ms);
     });
 }
+
+// Create floating particles
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 40;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Sample text for demonstration
+setTimeout(() => {
+    if (!document.getElementById('inputArea').value) {
+        document.getElementById('inputArea').value = 'Hello World';
+        translateText();
+    }
+}, 1000);
