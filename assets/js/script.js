@@ -1,4 +1,4 @@
-// Language translations
+// Language translations - 모든 언어 완성
 const translations = {
     en: {
         title: "MOST - Morse Code Translator",
@@ -329,135 +329,204 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function init() {
+    console.log('Initializing app...');
     detectUserLanguage();
-    loadFromURL();
     setupEventListeners();
     updateUI();
     createParticles();
+    loadFromURL();
+    
+    // 초기 샘플 텍스트
+    setTimeout(() => {
+        if (!document.getElementById('inputArea').value) {
+            document.getElementById('inputArea').value = 'Hello World';
+            translateText();
+        }
+    }, 1000);
 }
 
 function detectUserLanguage() {
     const userLang = navigator.language.split('-')[0];
+    console.log('Detected browser language:', userLang);
     if (translations[userLang]) {
         currentLang = userLang;
-        document.getElementById('currentLang').textContent = getLanguageName(userLang);
+        const langName = getLanguageName(userLang);
+        console.log('Setting language to:', langName);
+        document.getElementById('currentLang').textContent = langName;
     }
 }
 
 function getLanguageName(lang) {
     const names = {
-        en: 'English',
-        ko: '한국어',
-        ja: '日本語',
-        zh: '中文',
-        es: 'Español',
-        fr: 'Français',
-        de: 'Deutsch',
-        ru: 'Русский',
-        ar: 'العربية'
+        en: '🇺🇸 English',
+        ko: '🇰🇷 한국어',
+        ja: '🇯🇵 日本語',
+        zh: '🇨🇳 中文',
+        es: '🇪🇸 Español',
+        fr: '🇫🇷 Français',
+        de: '🇩🇪 Deutsch',
+        ru: '🇷🇺 Русский',
+        ar: '🇸🇦 العربية'
     };
-    return names[lang] || 'English';
+    return names[lang] || '🇺🇸 English';
 }
 
 function setupEventListeners() {
-    // Language selector
+    console.log('Setting up event listeners...');
+    
+    // Language selector - 수정된 이벤트 핸들링
     const languageBtn = document.getElementById('languageBtn');
     const languageDropdown = document.getElementById('languageDropdown');
     
-    languageBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isExpanded = languageDropdown.classList.contains('active');
-        languageDropdown.classList.toggle('active');
-        languageBtn.setAttribute('aria-expanded', !isExpanded);
-    });
-
-    document.querySelectorAll('.language-option').forEach(option => {
-        option.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const lang = this.dataset.lang;
-            const langText = this.textContent.trim();
-            
-            currentLang = lang;
-            document.getElementById('currentLang').textContent = langText;
-            languageDropdown.classList.remove('active');
-            languageBtn.setAttribute('aria-expanded', 'false');
-            
-            updateUI();
-        });
+    if (languageBtn && languageDropdown) {
+        console.log('Language selector found, setting up events...');
         
-        option.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
+        languageBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Language button clicked');
+            
+            const isExpanded = languageDropdown.classList.contains('active');
+            console.log('Dropdown is currently expanded:', isExpanded);
+            
+            languageDropdown.classList.toggle('active');
+            languageBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            console.log('Dropdown toggled. Active class:', languageDropdown.classList.contains('active'));
+        });
+
+        // 언어 옵션 클릭 이벤트
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function(e) {
                 e.preventDefault();
-                this.click();
+                e.stopPropagation();
+                
+                const lang = this.dataset.lang;
+                const langText = this.textContent.trim();
+                
+                console.log('Language option clicked:', lang, langText);
+                
+                currentLang = lang;
+                document.getElementById('currentLang').textContent = langText;
+                languageDropdown.classList.remove('active');
+                languageBtn.setAttribute('aria-expanded', 'false');
+                
+                updateUI();
+            });
+            
+            option.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // 외부 클릭시 드롭다운 닫기
+        document.addEventListener('click', function(e) {
+            if (!languageBtn.contains(e.target) && !languageDropdown.contains(e.target)) {
+                languageDropdown.classList.remove('active');
+                languageBtn.setAttribute('aria-expanded', 'false');
             }
         });
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.language-selector')) {
-            languageDropdown.classList.remove('active');
-            languageBtn.setAttribute('aria-expanded', 'false');
-        }
-    });
+    } else {
+        console.error('Language selector elements not found!');
+    }
 
     // Reference button
-    document.getElementById('referenceBtn').addEventListener('click', showReferenceModal);
+    const referenceBtn = document.getElementById('referenceBtn');
+    if (referenceBtn) {
+        referenceBtn.addEventListener('click', showReferenceModal);
+    }
 
     // Modal close
-    document.getElementById('closeModal').addEventListener('click', hideReferenceModal);
-    document.getElementById('referenceModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            hideReferenceModal();
-        }
-    });
+    const closeModal = document.getElementById('closeModal');
+    const referenceModal = document.getElementById('referenceModal');
+    
+    if (closeModal) {
+        closeModal.addEventListener('click', hideReferenceModal);
+    }
+    
+    if (referenceModal) {
+        referenceModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideReferenceModal();
+            }
+        });
+    }
 
     // Keyboard navigation for modal
     document.addEventListener('keydown', function(e) {
         const modal = document.getElementById('referenceModal');
-        if (modal.style.display === 'block' && e.key === 'Escape') {
+        if (modal && modal.style.display === 'block' && e.key === 'Escape') {
             hideReferenceModal();
         }
     });
 
     // Mode switch
-    document.getElementById('modeSwitch').addEventListener('click', function() {
-        isTextToMorse = !isTextToMorse;
-        
-        // Swap input and output values
-        const inputArea = document.getElementById('inputArea');
-        const outputArea = document.getElementById('outputArea');
-        const tempValue = inputArea.value;
-        inputArea.value = outputArea.value;
-        outputArea.value = tempValue;
-        
-        updateUI();
-        translateText();
-    });
+    const modeSwitch = document.getElementById('modeSwitch');
+    if (modeSwitch) {
+        modeSwitch.addEventListener('click', function() {
+            console.log('Mode switch clicked');
+            isTextToMorse = !isTextToMorse;
+            
+            // Swap input and output values
+            const inputArea = document.getElementById('inputArea');
+            const outputArea = document.getElementById('outputArea');
+            const tempValue = inputArea.value;
+            inputArea.value = outputArea.value;
+            outputArea.value = tempValue;
+            
+            updateUI();
+            translateText();
+        });
+    }
 
     // Input area
-    document.getElementById('inputArea').addEventListener('input', function() {
-        translateText();
-        detectLanguage();
-    });
+    const inputArea = document.getElementById('inputArea');
+    if (inputArea) {
+        inputArea.addEventListener('input', function() {
+            translateText();
+            detectLanguage();
+        });
+    }
 
     // Action buttons
-    document.getElementById('copyBtn').addEventListener('click', copyOutput);
-    document.getElementById('clearBtn').addEventListener('click', clearAll);
-    document.getElementById('shareBtn').addEventListener('click', shareTranslation);
-    document.getElementById('copyUrlBtn').addEventListener('click', copyShareUrl);
-    document.getElementById('playBtn').addEventListener('click', playMorse);
+    const copyBtn = document.getElementById('copyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const copyUrlBtn = document.getElementById('copyUrlBtn');
+    const playBtn = document.getElementById('playBtn');
+    
+    if (copyBtn) copyBtn.addEventListener('click', copyOutput);
+    if (clearBtn) clearBtn.addEventListener('click', clearAll);
+    if (shareBtn) shareBtn.addEventListener('click', shareTranslation);
+    if (copyUrlBtn) copyUrlBtn.addEventListener('click', copyShareUrl);
+    if (playBtn) playBtn.addEventListener('click', playMorse);
 
     // Speed slider
-    document.getElementById('speedSlider').addEventListener('input', function() {
-        document.getElementById('speedValue').textContent = this.value;
-    });
+    const speedSlider = document.getElementById('speedSlider');
+    if (speedSlider) {
+        speedSlider.addEventListener('input', function() {
+            const speedValue = document.getElementById('speedValue');
+            if (speedValue) {
+                speedValue.textContent = this.value;
+            }
+        });
+    }
+    
+    console.log('Event listeners setup complete');
 }
 
 function showReferenceModal() {
+    console.log('Showing reference modal...');
     const modal = document.getElementById('referenceModal');
     const content = document.getElementById('codebookContent');
-    const t = translations[currentLang];
+    
+    if (!modal || !content) {
+        console.error('Modal elements not found');
+        return;
+    }
     
     content.innerHTML = '';
     
@@ -501,44 +570,73 @@ function showReferenceModal() {
 
 function hideReferenceModal() {
     const modal = document.getElementById('referenceModal');
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-    document.getElementById('referenceBtn').focus();
+    if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.getElementById('referenceBtn').focus();
+    }
 }
 
 function updateUI() {
+    console.log('Updating UI for language:', currentLang);
     const t = translations[currentLang];
-    if (!t) return;
+    if (!t) {
+        console.error('Translation not found for language:', currentLang);
+        return;
+    }
 
-    document.getElementById('title').textContent = t.title;
-    document.getElementById('subtitle').textContent = t.subtitle;
-    document.getElementById('inputLabel').textContent = t.inputLabel;
-    document.getElementById('outputLabel').textContent = t.outputLabel;
-    document.getElementById('modeText').textContent = isTextToMorse ? t.modeTextToMorse : t.modeMorseToText;
-    document.getElementById('playText').textContent = t.playText;
-    document.getElementById('copyText').textContent = t.copyText;
-    document.getElementById('clearText').textContent = t.clearText;
-    document.getElementById('shareText').textContent = t.shareText;
-    document.getElementById('shareTitle').textContent = t.shareTitle;
-    document.getElementById('copyUrlText').textContent = t.copyUrlText;
-    document.getElementById('downloadTitle').textContent = t.downloadTitle;
-    document.getElementById('downloadDescription').textContent = t.downloadDescription;
-    document.getElementById('downloadText').textContent = t.downloadText;
-    document.getElementById('speedLabel').textContent = t.speedLabel;
-    document.getElementById('referenceText').textContent = t.referenceText;
-    document.getElementById('modalTitle').textContent = t.modalTitle;
+    // Update text elements safely
+    const elements = {
+        'title': t.title,
+        'subtitle': t.subtitle,
+        'inputLabel': t.inputLabel,
+        'outputLabel': t.outputLabel,
+        'modeText': isTextToMorse ? t.modeTextToMorse : t.modeMorseToText,
+        'playText': t.playText,
+        'copyText': t.copyText,
+        'clearText': t.clearText,
+        'shareText': t.shareText,
+        'shareTitle': t.shareTitle,
+        'copyUrlText': t.copyUrlText,
+        'downloadTitle': t.downloadTitle,
+        'downloadDescription': t.downloadDescription,
+        'downloadText': t.downloadText,
+        'speedLabel': t.speedLabel,
+        'referenceText': t.referenceText,
+        'modalTitle': t.modalTitle
+    };
 
+    Object.entries(elements).forEach(([id, text]) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = text;
+        } else {
+            console.warn(`Element with id '${id}' not found`);
+        }
+    });
+
+    // Update placeholder
     const inputArea = document.getElementById('inputArea');
-    inputArea.placeholder = isTextToMorse ? t.placeholder : t.morsePlaceholder;
+    if (inputArea) {
+        inputArea.placeholder = isTextToMorse ? t.placeholder : t.morsePlaceholder;
+    }
 
+    // Update document properties
     document.documentElement.lang = currentLang;
     document.title = t.title;
+    
+    console.log('UI update complete');
 }
 
 function detectLanguage() {
-    const text = document.getElementById('inputArea').value;
+    const inputArea = document.getElementById('inputArea');
+    const detectedLanguage = document.getElementById('detectedLanguage');
+    
+    if (!inputArea || !detectedLanguage) return;
+    
+    const text = inputArea.value;
     if (!text.trim()) {
-        document.getElementById('detectedLanguage').textContent = '';
+        detectedLanguage.textContent = '';
         return;
     }
 
@@ -546,8 +644,7 @@ function detectLanguage() {
         if (pattern.test(text)) {
             const t = translations[currentLang];
             if (t) {
-                document.getElementById('detectedLanguage').textContent = 
-                    t.detectedLang + getLanguageName(lang);
+                detectedLanguage.textContent = t.detectedLang + getLanguageName(lang);
             }
             return;
         }
@@ -555,13 +652,17 @@ function detectLanguage() {
 }
 
 function translateText() {
-    const input = document.getElementById('inputArea').value;
-    const output = document.getElementById('outputArea');
+    const inputArea = document.getElementById('inputArea');
+    const outputArea = document.getElementById('outputArea');
+    
+    if (!inputArea || !outputArea) return;
+    
+    const input = inputArea.value;
 
     if (isTextToMorse) {
-        output.value = textToMorse(input);
+        outputArea.value = textToMorse(input);
     } else {
-        output.value = morseToText(input);
+        outputArea.value = morseToText(input);
     }
 }
 
@@ -627,46 +728,70 @@ function morseToText(morse) {
 }
 
 function copyOutput() {
-    const output = document.getElementById('outputArea');
-    output.select();
-    output.setSelectionRange(0, 99999);
+    const outputArea = document.getElementById('outputArea');
+    if (!outputArea) return;
+    
+    outputArea.select();
+    outputArea.setSelectionRange(0, 99999);
     
     try {
-        navigator.clipboard.writeText(output.value).then(() => {
-            showNotification('Copied!');
-            output.classList.add('success-animation');
-            setTimeout(() => {
-                output.classList.remove('success-animation');
-            }, 600);
-        }).catch(() => {
-            document.execCommand('copy');
-            showNotification('Copied!');
-        });
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(outputArea.value).then(() => {
+                showNotification('Copied!');
+                outputArea.classList.add('success-animation');
+                setTimeout(() => {
+                    outputArea.classList.remove('success-animation');
+                }, 600);
+            }).catch(() => {
+                // Fallback to execCommand
+                if (document.execCommand('copy')) {
+                    showNotification('Copied!');
+                }
+            });
+        } else {
+            // Fallback for older browsers
+            if (document.execCommand('copy')) {
+                showNotification('Copied!');
+            }
+        }
     } catch (err) {
         console.error('Copy failed:', err);
+        showNotification('Copy failed');
     }
 }
 
 function showNotification(message) {
-    const btn = document.getElementById('copyBtn');
-    const originalHtml = btn.innerHTML;
-    btn.innerHTML = `<i class="fas fa-check" aria-hidden="true"></i> ${message}`;
+    const copyBtn = document.getElementById('copyBtn');
+    if (!copyBtn) return;
+    
+    const originalHtml = copyBtn.innerHTML;
+    copyBtn.innerHTML = `<i class="fas fa-check" aria-hidden="true"></i> ${message}`;
     setTimeout(() => {
-        btn.innerHTML = originalHtml;
+        copyBtn.innerHTML = originalHtml;
     }, 2000);
 }
 
 function clearAll() {
-    document.getElementById('inputArea').value = '';
-    document.getElementById('outputArea').value = '';
-    document.getElementById('detectedLanguage').textContent = '';
-    document.getElementById('shareSection').style.display = 'none';
-    document.getElementById('inputArea').focus();
+    const inputArea = document.getElementById('inputArea');
+    const outputArea = document.getElementById('outputArea');
+    const detectedLanguage = document.getElementById('detectedLanguage');
+    const shareSection = document.getElementById('shareSection');
+    
+    if (inputArea) inputArea.value = '';
+    if (outputArea) outputArea.value = '';
+    if (detectedLanguage) detectedLanguage.textContent = '';
+    if (shareSection) shareSection.style.display = 'none';
+    if (inputArea) inputArea.focus();
 }
 
 function shareTranslation() {
-    const input = document.getElementById('inputArea').value;
-    const output = document.getElementById('outputArea').value;
+    const inputArea = document.getElementById('inputArea');
+    const outputArea = document.getElementById('outputArea');
+    
+    if (!inputArea || !outputArea) return;
+    
+    const input = inputArea.value;
+    const output = outputArea.value;
     
     if (!input.trim() && !output.trim()) {
         alert('Please enter some text to share!');
@@ -684,8 +809,11 @@ function shareTranslation() {
         const encodedData = btoa(encodeURIComponent(JSON.stringify(shareData)));
         const shareUrl = `${window.location.origin}${window.location.pathname}?data=${encodedData}`;
         
-        document.getElementById('shareUrl').value = shareUrl;
-        document.getElementById('shareSection').style.display = 'block';
+        const shareUrlInput = document.getElementById('shareUrl');
+        const shareSection = document.getElementById('shareSection');
+        
+        if (shareUrlInput) shareUrlInput.value = shareUrl;
+        if (shareSection) shareSection.style.display = 'block';
     } catch (e) {
         alert('Failed to create share URL. Please try again.');
         console.error('Share error:', e);
@@ -694,27 +822,38 @@ function shareTranslation() {
 
 function copyShareUrl() {
     const shareUrl = document.getElementById('shareUrl');
+    if (!shareUrl) return;
+    
     shareUrl.select();
     shareUrl.setSelectionRange(0, 99999);
     
     try {
-        navigator.clipboard.writeText(shareUrl.value).then(() => {
-            showShareNotification('Copied!');
-        }).catch(() => {
-            document.execCommand('copy');
-            showShareNotification('Copied!');
-        });
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareUrl.value).then(() => {
+                showShareNotification('Copied!');
+            }).catch(() => {
+                if (document.execCommand('copy')) {
+                    showShareNotification('Copied!');
+                }
+            });
+        } else {
+            if (document.execCommand('copy')) {
+                showShareNotification('Copied!');
+            }
+        }
     } catch (err) {
         console.error('Copy failed:', err);
     }
 }
 
 function showShareNotification(message) {
-    const btn = document.getElementById('copyUrlBtn');
-    const originalHtml = btn.innerHTML;
-    btn.innerHTML = `<i class="fas fa-check" aria-hidden="true"></i> ${message}`;
+    const copyUrlBtn = document.getElementById('copyUrlBtn');
+    if (!copyUrlBtn) return;
+    
+    const originalHtml = copyUrlBtn.innerHTML;
+    copyUrlBtn.innerHTML = `<i class="fas fa-check" aria-hidden="true"></i> ${message}`;
     setTimeout(() => {
-        btn.innerHTML = originalHtml;
+        copyUrlBtn.innerHTML = originalHtml;
     }, 2000);
 }
 
@@ -728,9 +867,13 @@ function loadFromURL() {
             currentLang = shareData.lang || 'en';
             isTextToMorse = shareData.mode === 'text';
             
-            document.getElementById('inputArea').value = shareData.input || '';
-            document.getElementById('outputArea').value = shareData.output || '';
-            document.getElementById('currentLang').textContent = getLanguageName(currentLang);
+            const inputArea = document.getElementById('inputArea');
+            const outputArea = document.getElementById('outputArea');
+            const currentLangElement = document.getElementById('currentLang');
+            
+            if (inputArea) inputArea.value = shareData.input || '';
+            if (outputArea) outputArea.value = shareData.output || '';
+            if (currentLangElement) currentLangElement.textContent = getLanguageName(currentLang);
             
             updateUI();
             detectLanguage();
@@ -746,23 +889,32 @@ function playMorse() {
         return;
     }
     
-    const morseText = isTextToMorse ? 
-        document.getElementById('outputArea').value : 
-        document.getElementById('inputArea').value;
+    const outputArea = document.getElementById('outputArea');
+    const inputArea = document.getElementById('inputArea');
     
-    if (!morseText.trim()) return;
+    if (!outputArea || !inputArea) return;
+    
+    const morseText = isTextToMorse ? outputArea.value : inputArea.value;
+    
+    if (!morseText.trim()) {
+        alert('Please enter some text to generate Morse code first!');
+        return;
+    }
     
     isPlaying = true;
-    const btn = document.getElementById('playBtn');
-    const originalHtml = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-stop" aria-hidden="true"></i> Stop';
+    const playBtn = document.getElementById('playBtn');
+    const originalHtml = playBtn ? playBtn.innerHTML : '';
+    
+    if (playBtn) {
+        playBtn.innerHTML = '<i class="fas fa-stop" aria-hidden="true"></i> Stop';
+    }
     
     playMorseAudio(morseText).then(() => {
         isPlaying = false;
-        btn.innerHTML = originalHtml;
+        if (playBtn) playBtn.innerHTML = originalHtml;
     }).catch(() => {
         isPlaying = false;
-        btn.innerHTML = originalHtml;
+        if (playBtn) playBtn.innerHTML = originalHtml;
     });
 }
 
@@ -784,9 +936,11 @@ function stopMorsePlayback() {
         currentOscillator = null;
     }
     
-    const btn = document.getElementById('playBtn');
-    const t = translations[currentLang];
-    btn.innerHTML = `<i class="fas fa-play" aria-hidden="true"></i> ${t.playText}`;
+    const playBtn = document.getElementById('playBtn');
+    const t = translations[currentLang] || translations['en'];
+    if (playBtn) {
+        playBtn.innerHTML = `<i class="fas fa-play" aria-hidden="true"></i> ${t.playText}`;
+    }
 }
 
 async function playMorseAudio(morseText) {
@@ -799,7 +953,8 @@ async function playMorseAudio(morseText) {
             await audioContext.resume();
         }
         
-        const speed = parseInt(document.getElementById('speedSlider').value);
+        const speedSlider = document.getElementById('speedSlider');
+        const speed = speedSlider ? parseInt(speedSlider.value) : 5;
         const dotDuration = 1200 / speed;
         const dashDuration = dotDuration * 3;
         const pauseDuration = dotDuration;
@@ -888,6 +1043,8 @@ function sleep(ms) {
 // Create floating particles
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
     const particleCount = 40;
 
     for (let i = 0; i < particleCount; i++) {
@@ -898,12 +1055,6 @@ function createParticles() {
         particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
         particlesContainer.appendChild(particle);
     }
+    
+    console.log('Particles created');
 }
-
-// Sample text for demonstration
-setTimeout(() => {
-    if (!document.getElementById('inputArea').value) {
-        document.getElementById('inputArea').value = 'Hello World';
-        translateText();
-    }
-}, 1000);
